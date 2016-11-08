@@ -27,3 +27,17 @@ Instructions: https://wpilib.screenstepslive.com/s/4485/m/13810
     - I did not need to use Option 2.
 13. Updating the plugins manually
     - No updates found.
+    
+Do we need to install OpenSSH before installing Git?
+
+Install standalone Git
+
+1.  Download and install git from here: http://git-scm.com/
+2.  Click next through several pages of the installation wizard (ensure it's installing into c:\program files\git) and stop on the 'Select Components' page.
+3.  Deselect the 'Windows Explorer integration' check box & click next.
+4.  Click next again.
+5.  Select 'Use Git from the Windows Command Prompt' (second option) & click next.
+6.  If you are prompted to selected an SSH client, choose 'Use OpenSSH' & click next.
+7.  Select Checkout Windows-style, commit Unix-style line endings & click next.
+8.  Finish the install.
+9.  Make sure that git.exe is in your %PATH% environment variable (C:\Program Files\Git\cmd).
