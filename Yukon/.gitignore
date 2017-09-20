@@ -82,10 +82,10 @@ atlassian-ide-plugin.xml
 
 # Eclipse specific files/directories #
 ######################################
-.classpath
+#.classpath
 #.project
-.settings
-.metadata
+#.settings
+#.metadata
 
 # NetBeans specific files/directories #
 #######################################
