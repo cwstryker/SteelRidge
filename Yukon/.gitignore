@@ -90,3 +90,4 @@ atlassian-ide-plugin.xml
 # NetBeans specific files/directories #
 #######################################
 .nbattrs
+/Debug/
