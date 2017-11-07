@@ -29,7 +29,7 @@ void drivewithjoysticks::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void drivewithjoysticks::Execute() {
-Robot::drivetrain->TankDrive(Robot::oi->getxbox());
+	Robot::drivetrain->TankDrive(Robot::oi->getXbox());
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -39,7 +39,7 @@ bool drivewithjoysticks::IsFinished() {
 
 // Called once after isFinished returns true
 void drivewithjoysticks::End() {
-Robot::drivetrain->drivestop();
+	Robot::drivetrain->drivestop();
 }
 
 // Called when another command which requires one or more of the same

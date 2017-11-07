@@ -29,7 +29,7 @@ void driveauto::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void driveauto::Execute() {
-Robot::drivetrain->driveauto();
+	Robot::drivetrain->driveauto();
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -39,7 +39,7 @@ bool driveauto::IsFinished() {
 
 // Called once after isFinished returns true
 void driveauto::End() {
-Robot::drivetrain->drivestop();
+	Robot::drivetrain->drivestop();
 }
 
 // Called when another command which requires one or more of the same

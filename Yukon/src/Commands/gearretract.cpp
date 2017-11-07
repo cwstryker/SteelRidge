@@ -29,7 +29,7 @@ void gearretract::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void gearretract::Execute() {
-Robot::gearpuncher->retractgearpunch();
+	Robot::gearpuncher->retractgearpunch();
 }
 
 // Make this return true when this Command no longer needs to run execute()

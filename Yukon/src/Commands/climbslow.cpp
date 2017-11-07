@@ -29,7 +29,7 @@ void climbslow::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void climbslow::Execute() {
-Robot::climber->climbupslow();
+	Robot::climber->climbupslow();
 }
 
 // Make this return true when this Command no longer needs to run execute()
