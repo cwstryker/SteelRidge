@@ -65,13 +65,13 @@ void RobotMap::init() {
     /* Left Encoder Setup */
     drivetrainfrontleft->SetFeedbackDevice(CANTalon::QuadEncoder); //Use quadencoder through talon
     drivetrainfrontleft->ConfigEncoderCodesPerRev(80); //CIM uses 20 pulses per rev and 4 counts per rev
-    drivetrainfrontleft->SetSensorDirection(false); //Reverse sensor direction? We'll need to check this.
+    drivetrainfrontleft->SetSensorDirection(true); //Reverse sensor direction to match throttle.
     drivetrainfrontleft->SetControlMode(CANTalon::kPercentVbus); //Sets initial mode to Velocity
 
     /* Right Encoder Setup */
     drivetrainfrontright->SetFeedbackDevice(CANTalon::QuadEncoder); //Use quadencoder through talon
     drivetrainfrontright->ConfigEncoderCodesPerRev(80); //CIM uses 20 pulses per rev and 4 counts per rev
-    drivetrainfrontright->SetSensorDirection(false); //Reverse sensor direction? We'll need to check this.
+    drivetrainfrontright->SetSensorDirection(true); //Reverse sensor direction to match Throttle direction.
     drivetrainfrontright->SetControlMode(CANTalon::kPercentVbus); //Sets initial mode to Velocity
 
     /* Set up rear motors to follow front */
@@ -81,12 +81,5 @@ void RobotMap::init() {
     drivetrainrearright->SetControlMode(CANTalon::kFollower); //Set rear right to follow
     drivetrainrearright->Set(2); //rear right follows front right
 
-    /* Let's put some information in the Dashboard to check our encoders. */
-
-    SmartDashboard::PutNumber("Left Encoder Position with GetEncPosition", drivetrainfrontleft->GetEncPosition()); //Get left encoder position. Which one works?
-    SmartDashboard::PutNumber("Left Encoder Position with GetPosition", drivetrainfrontleft->GetPosition()); //Get left encoder position. Which one works?
-
-    SmartDashboard::PutNumber("Right Encoder Position with GetEncPosition", drivetrainfrontright->GetEncPosition()); //Get right encoder position. Which one works?
-    SmartDashboard::PutNumber("Right Encoder Position with GetPosition", drivetrainfrontright->GetPosition()); //Get right encoder position. Which one works?
 
 }

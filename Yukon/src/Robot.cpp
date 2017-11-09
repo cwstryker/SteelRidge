@@ -62,10 +62,20 @@ void Robot::DisabledPeriodic() {
 void Robot::AutonomousInit() {
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Start();
+	//Zero the encoders when Autonomous initializes
+	RobotMap::drivetrainfrontleft->SetPosition(0.0);
+	RobotMap::drivetrainfrontright->SetPosition(0.0);
 }
 
 void Robot::AutonomousPeriodic() {
 	Scheduler::GetInstance()->Run();
+
+	/* Output some values to the smartdashboard when we're in Teleop */
+	SmartDashboard::PutNumber("Left Encoder Position with GetEncPosition", RobotMap::drivetrainfrontleft->GetEncPosition()); //Get left encoder position. Which one works?
+	SmartDashboard::PutNumber("Left Encoder Position with GetPosition", RobotMap::drivetrainfrontleft->GetPosition()); //Get left encoder position. Which one works?
+
+	SmartDashboard::PutNumber("Right Encoder Position with GetEncPosition", RobotMap::drivetrainfrontright->GetEncPosition()); //Get right encoder position. Which one works?
+	SmartDashboard::PutNumber("Right Encoder Position with GetPosition", RobotMap::drivetrainfrontright->GetPosition()); //Get right encoder position. Which one works?
 }
 
 void Robot::TeleopInit() {
@@ -75,14 +85,27 @@ void Robot::TeleopInit() {
 	// these lines or comment it out.
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Cancel();
+
+	//Zero the encoders when Teleop initializes
+	RobotMap::drivetrainfrontleft->SetPosition(0.0);
+	RobotMap::drivetrainfrontright->SetPosition(0.0);
 }
 
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
+
+	/* Output some values to the smartdashboard when we're in Teleop */
+	SmartDashboard::PutNumber("Left Encoder Position with GetEncPosition", RobotMap::drivetrainfrontleft->GetEncPosition()); //Get left encoder position. Which one works?
+	SmartDashboard::PutNumber("Left Encoder Position with GetPosition", RobotMap::drivetrainfrontleft->GetPosition()); //Get left encoder position. Which one works?
+
+	SmartDashboard::PutNumber("Right Encoder Position with GetEncPosition", RobotMap::drivetrainfrontright->GetEncPosition()); //Get right encoder position. Which one works?
+	SmartDashboard::PutNumber("Right Encoder Position with GetPosition", RobotMap::drivetrainfrontright->GetPosition()); //Get right encoder position. Which one works?
+
 }
 
 void Robot::TestPeriodic() {
 	lw->Run();
+
 }
 
 START_ROBOT_CLASS(Robot);
