@@ -66,13 +66,16 @@ void RobotMap::init() {
     drivetrainfrontleft->SetFeedbackDevice(CANTalon::QuadEncoder); //Use quadencoder through talon
     drivetrainfrontleft->ConfigEncoderCodesPerRev(80); //CIM uses 20 pulses per rev and 4 counts per rev
     drivetrainfrontleft->SetSensorDirection(true); //Reverse sensor direction to match throttle.
-    drivetrainfrontleft->SetControlMode(CANTalon::kPercentVbus); //Sets initial mode to Velocity
+    //drivetrainfrontleft->SetControlMode(CANTalon::kPercentVbus); //Sets initial mode to Velocity
+    drivetrainfrontleft->SetPID(0.5,0.0,0.0,0.0);
 
     /* Right Encoder Setup */
     drivetrainfrontright->SetFeedbackDevice(CANTalon::QuadEncoder); //Use quadencoder through talon
     drivetrainfrontright->ConfigEncoderCodesPerRev(80); //CIM uses 20 pulses per rev and 4 counts per rev
-    drivetrainfrontright->SetSensorDirection(true); //Reverse sensor direction to match Throttle direction.
-    drivetrainfrontright->SetControlMode(CANTalon::kPercentVbus); //Sets initial mode to Velocity
+    drivetrainfrontright->SetSensorDirection(false); //Reverse sensor direction to match Throttle direction.
+    //drivetrainfrontright->SetControlMode(CANTalon::kPercentVbus); //Sets initial mode to Velocity
+    drivetrainfrontright->SetPID(0.5,0.0,0.0,0.0);
+
 
     /* Set up rear motors to follow front */
     drivetrainrearleft->SetControlMode(CANTalon::kFollower); //Set rear left to follow

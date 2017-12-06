@@ -63,7 +63,15 @@ void Drivetrain::TankDrive(double left, double right){
 }
 
 void Drivetrain::driveauto(){
-	robotDrive21->TankDrive(-0.36,-0.32);
+	//robotDrive21->TankDrive(-0.36,-0.32);
+	robotDrive21->SetSafetyEnabled(false);
+	frontleft->SetControlMode(CANTalon::kPosition);
+	frontright->SetControlMode(CANTalon::kPosition);
+	frontright->SetClosedLoopOutputDirection(true);
+	frontleft->EnableControl();
+	frontright->EnableControl();
+	frontleft->Set(50.0);
+	frontright->Set(50.0);
 }
 
 void Drivetrain::drivestop(){

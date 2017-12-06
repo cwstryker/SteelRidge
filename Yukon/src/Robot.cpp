@@ -62,19 +62,33 @@ void Robot::DisabledPeriodic() {
 void Robot::AutonomousInit() {
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Start();
+
+	//Remove robotdrive safety feature to remove timout errors
+	RobotMap::drivetrainRobotDrive21->SetSafetyEnabled(false);
+
+	//Enable talons
+	RobotMap::drivetrainfrontleft->EnableControl();
+	RobotMap::drivetrainfrontright->EnableControl();
+
+	//Set Talons to avoid timouts
+	RobotMap::drivetrainfrontleft->Set(0.0);
+	RobotMap::drivetrainfrontright->Set(0.0);
+
+
 	//Zero the encoders when Autonomous initializes
 	RobotMap::drivetrainfrontleft->SetPosition(0.0);
 	RobotMap::drivetrainfrontright->SetPosition(0.0);
+
 }
 
 void Robot::AutonomousPeriodic() {
 	Scheduler::GetInstance()->Run();
 
 	/* Output some values to the smartdashboard when we're in Teleop */
-	SmartDashboard::PutNumber("Left Encoder Position with GetEncPosition", RobotMap::drivetrainfrontleft->GetEncPosition()); //Get left encoder position. Which one works?
+	//SmartDashboard::PutNumber("Left Encoder Position with GetEncPosition", RobotMap::drivetrainfrontleft->GetEncPosition()); //Get left encoder position. Which one works?
 	SmartDashboard::PutNumber("Left Encoder Position with GetPosition", RobotMap::drivetrainfrontleft->GetPosition()); //Get left encoder position. Which one works?
 
-	SmartDashboard::PutNumber("Right Encoder Position with GetEncPosition", RobotMap::drivetrainfrontright->GetEncPosition()); //Get right encoder position. Which one works?
+	//SmartDashboard::PutNumber("Right Encoder Position with GetEncPosition", RobotMap::drivetrainfrontright->GetEncPosition()); //Get right encoder position. Which one works?
 	SmartDashboard::PutNumber("Right Encoder Position with GetPosition", RobotMap::drivetrainfrontright->GetPosition()); //Get right encoder position. Which one works?
 }
 
@@ -86,19 +100,35 @@ void Robot::TeleopInit() {
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Cancel();
 
+	//Change control modes
+	RobotMap::drivetrainfrontleft->SetControlMode(CANTalon::kPercentVbus);
+	RobotMap::drivetrainfrontright->SetControlMode(CANTalon::kPercentVbus);
+
+	//Enable talons
+	RobotMap::drivetrainfrontleft->EnableControl();
+	RobotMap::drivetrainfrontright->EnableControl();
+
+	//Set Talons to avoid timeouts
+	RobotMap::drivetrainfrontleft->Set(0.0);
+	RobotMap::drivetrainfrontright->Set(0.0);
+
 	//Zero the encoders when Teleop initializes
 	RobotMap::drivetrainfrontleft->SetPosition(0.0);
 	RobotMap::drivetrainfrontright->SetPosition(0.0);
+
+	//Re-enable safety features
+	RobotMap::drivetrainRobotDrive21->SetSafetyEnabled(true);
+
 }
 
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
 
 	/* Output some values to the smartdashboard when we're in Teleop */
-	SmartDashboard::PutNumber("Left Encoder Position with GetEncPosition", RobotMap::drivetrainfrontleft->GetEncPosition()); //Get left encoder position. Which one works?
+	//SmartDashboard::PutNumber("Left Encoder Position with GetEncPosition", RobotMap::drivetrainfrontleft->GetEncPosition()); //Get left encoder position. Which one works?
 	SmartDashboard::PutNumber("Left Encoder Position with GetPosition", RobotMap::drivetrainfrontleft->GetPosition()); //Get left encoder position. Which one works?
 
-	SmartDashboard::PutNumber("Right Encoder Position with GetEncPosition", RobotMap::drivetrainfrontright->GetEncPosition()); //Get right encoder position. Which one works?
+	//SmartDashboard::PutNumber("Right Encoder Position with GetEncPosition", RobotMap::drivetrainfrontright->GetEncPosition()); //Get right encoder position. Which one works?
 	SmartDashboard::PutNumber("Right Encoder Position with GetPosition", RobotMap::drivetrainfrontright->GetPosition()); //Get right encoder position. Which one works?
 
 }
