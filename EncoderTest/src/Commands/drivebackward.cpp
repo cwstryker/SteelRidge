@@ -30,7 +30,7 @@ void drivebackward::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void drivebackward::Execute() {
-	Robot::drivetrain->User_drivebackward(Robot::oi->getxbox());
+	Robot::drivetrain->userDrivebackward(Robot::oi->getxbox());
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -40,11 +40,11 @@ bool drivebackward::IsFinished() {
 
 // Called once after isFinished returns true
 void drivebackward::End() {
-	Robot::drivetrain->encoder_done();
+	Robot::drivetrain->userDrive(Robot::oi->getxbox());
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void drivebackward::Interrupted() {
-
+	End();
 }

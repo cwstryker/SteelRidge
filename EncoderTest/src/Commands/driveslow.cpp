@@ -30,7 +30,7 @@ void driveslow::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void driveslow::Execute() {
-	Robot::drivetrain->User_driveslow(Robot::oi->getxbox());
+	Robot::drivetrain->userDriveslow(Robot::oi->getxbox());
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -40,11 +40,11 @@ bool driveslow::IsFinished() {
 
 // Called once after isFinished returns true
 void driveslow::End() {
-	Robot::drivetrain->encoder_done();
+	Robot::drivetrain->userDrive(Robot::oi->getxbox());
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void driveslow::Interrupted() {
-
+	End();
 }

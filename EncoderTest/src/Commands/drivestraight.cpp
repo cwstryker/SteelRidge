@@ -30,7 +30,7 @@ void drivestraight::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void drivestraight::Execute() {
-	Robot::drivetrain->encoder_speed(10, 10);
+	Robot::drivetrain->encoderSpeed(100, 100);
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -40,11 +40,11 @@ bool drivestraight::IsFinished() {
 
 // Called once after isFinished returns true
 void drivestraight::End() {
-	Robot::drivetrain->encoder_done();
+	Robot::drivetrain->userDrive(Robot::oi->getxbox());
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void drivestraight::Interrupted() {
-
+	End();
 }

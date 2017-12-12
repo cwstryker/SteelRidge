@@ -54,17 +54,17 @@ void Robot::AutonomousInit() {
 		autonomousCommand->Start();
 
 	//Enable talons
-	RobotMap::drivetrainfl->EnableControl();
-	RobotMap::drivetrainfr->EnableControl();
+	//RobotMap::drivetrainfl->EnableControl();
+	//RobotMap::drivetrainfr->EnableControl();
 
 	//Set Talons to avoid timouts
-	RobotMap::drivetrainfl->Set(0.0);
-	RobotMap::drivetrainfr->Set(0.0);
+	//RobotMap::drivetrainfl->Set(0.0);
+	//RobotMap::drivetrainfr->Set(0.0);
 
 
 	//Zero the encoders when Autonomous initializes
-	RobotMap::drivetrainfl->SetPosition(0.0);
-	RobotMap::drivetrainfr->SetPosition(0.0);
+	//RobotMap::drivetrainfl->SetPosition(0.0);
+	//RobotMap::drivetrainfr->SetPosition(0.0);
 }
 
 void Robot::AutonomousPeriodic() {
@@ -86,16 +86,16 @@ void Robot::TeleopInit() {
 		autonomousCommand->Cancel();
 
 	//Zero Encoders
-	RobotMap::drivetrainfl->SetPosition(0.0);
-	RobotMap::drivetrainfr->SetPosition(0.0);
+	//RobotMap::drivetrainfl->SetPosition(0.0);
+	//RobotMap::drivetrainfr->SetPosition(0.0);
 
 	//Enable talons
-	RobotMap::drivetrainfl->EnableControl();
-	RobotMap::drivetrainfr->EnableControl();
+	//RobotMap::drivetrainfl->EnableControl();
+	//RobotMap::drivetrainfr->EnableControl();
 
 	//Set a value to initialize the talons
-	RobotMap::drivetrainfl->Set(0.0);
-	RobotMap::drivetrainfr->Set(0.0);
+	//RobotMap::drivetrainfl->Set(0.0);
+	//RobotMap::drivetrainfr->Set(0.0);
 }
 
 void Robot::TeleopPeriodic() {
