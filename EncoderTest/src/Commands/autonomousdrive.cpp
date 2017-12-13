@@ -28,6 +28,7 @@ autonomousdrive::autonomousdrive(): Command() {
 void autonomousdrive::Initialize() {
 	SetTimeout(7);
 	m_done = false;
+	Robot::drivetrain->encoderReset();
 }
 
 // Called repeatedly when this Command is scheduled to run

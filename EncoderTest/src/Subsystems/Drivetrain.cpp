@@ -84,8 +84,8 @@ void Drivetrain::userDriveslow(std::shared_ptr<Joystick>xbox){
 	fl->SetControlMode(CANTalon::kPercentVbus);
 	fr->SetControlMode(CANTalon::kPercentVbus);
 
-	fl->ConfigMaxOutputVoltage(6.0);
-	fr->ConfigMaxOutputVoltage(6.0);
+	fl->ConfigMaxOutputVoltage(2.0);
+	fr->ConfigMaxOutputVoltage(2.0);
 
 	fl->EnableControl();
 	fr->EnableControl();
@@ -103,6 +103,9 @@ void Drivetrain::encoderPosition(double left, double right){
 	//fl->SetPosition(0.0);
 	//fr->SetPosition(0.0);
 
+	//fl->SetEncPosition(0);
+	//fr->SetEncPosition(0);
+
 	fl->EnableControl();
 	fr->EnableControl();
 
@@ -116,6 +119,9 @@ void Drivetrain::encoderPosition(double left, double right){
 void Drivetrain::encoderSpeed(double leftspeed, double rightspeed){
 	fl->SetControlMode(CANTalon::kSpeed);
 	fr->SetControlMode(CANTalon::kSpeed);
+
+	fr->SetClosedLoopOutputDirection(true);
+	fr->SetInverted(true);
 
 	fl->EnableControl();
 	fr->EnableControl();

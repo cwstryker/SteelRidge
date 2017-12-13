@@ -57,14 +57,14 @@ void RobotMap::init() {
     drivetrainfl->SetFeedbackDevice(CANTalon::QuadEncoder); //CIMcoder is a quad encoder
     drivetrainfl->ConfigEncoderCodesPerRev(80); //20 ppr * 4 (quadrature) = 80 CPR
     drivetrainfl->SetSensorDirection(true); //reverse sensor so motor and sensor are in phase
-    drivetrainfl->SetPID(0.0,0.0,0.0,0.0); //Set values for Proportional, Integral, Derivative and Feed Forward
-    drivetrainfl->SetAllowableClosedLoopErr(32); //Sets the allowable error in closed loop to 10% of 1 revolution (320)
-
+    drivetrainfl->SetPID(3.5,0.001,.35,1.514); //Set values for Proportional, Integral, Derivative and Feed Forward
+    drivetrainfl->SetAllowableClosedLoopErr(1000); //Sets the allowable error in closed loop to 10% of 1 revolution (320)
+    drivetrainfl->SetIzone(10);
     //right encoder
     drivetrainfr->SetInverted(true); //reverse the motor for the right bank of motors
     drivetrainfr->SetFeedbackDevice(CANTalon::QuadEncoder); //CIMcoder is a quad encoder
     drivetrainfr->ConfigEncoderCodesPerRev(80); //20 ppr * 4 (quadrature) = 80 CPR
     drivetrainfr->SetSensorDirection(true); //reverse sensor so motor and sensor are in phase
-    drivetrainfr->SetPID(0.0,0.0,0.0,0.0); //Set values for Proportional, Integral, Derivative and Feed Forward
-    drivetrainfr->SetAllowableClosedLoopErr(32); //Sets the allowable error in closed loop to 10% of 1 revolution (320)
+    drivetrainfr->SetPID(0.0,0.0,0.0,1.619); //Set values for Proportional, Integral, Derivative and Feed Forward
+    drivetrainfr->SetAllowableClosedLoopErr(1000); //Sets the allowable error in closed loop to 10% of 1 revolution (320)
 }
