@@ -30,7 +30,7 @@ void drivestraight::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void drivestraight::Execute() {
-	Robot::drivetrain->encoderSpeed(100, 100);
+	Robot::drivetrain->encoderSpeed(1000, 1000);
 }
 
 // Make this return true when this Command no longer needs to run execute()
